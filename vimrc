@@ -54,10 +54,10 @@ call plug#end()
 "----------Custom Commandline----------
 
 ":WJ saves buffer as .java file to project folder
-:command -nargs=1 WJ :w ~\Desktop\code\java\<args>.java
+":command -nargs=1 WJ :w ~\Desktop\code\java\<args>.java
 
 ":WH saves buffer as .html file to project folder
-:command -nargs=1 WH :w ~\Desktop\code\html\<args>.html
+":command -nargs=1 WH :w ~\Desktop\code\html\<args>.html
 
 
 "----------Autocommands----------
