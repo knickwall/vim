@@ -1,69 +1,104 @@
-"----------General Settings----------
+" Macht Vim inkompatibel zu VI, damit die erweiterten Vim-Funktionen genutzt werden können
+set nocompatible
 
-"default save path
-:cd ~\Desktop\code\
+" Syntax Farbschema
+syntax enable
 
-"scrolloff lines when moving up/down
-:set scrolloff=15
+" datei-/sprachspezifische Einstellungen nutzen (z.B. für .py oder .html)
+filetype plugin indent on
 
-"syntax highlighting
-:syntax on
+" stellt die Größe des gVIM Fensters beim Programmstart ein
+set lines=999 columns=9999
 
-"colour scheme
-:colorscheme desert
+" neue Zeile (mit Return) behält vorherige Einrückungstiefe bei
+set autoindent
 
-"absolute and relative line numbering
-:set number
-:set relativenumber
+" separat anwählbare Leerzeichen anstatt von Tab-Sprüngen bei eingerückten Zeilen
+" set expandtab
 
-"set initial window dimensions
-:set columns=100 lines=40
+" Buffer nicht entladen, sondern nur verstecken, wenn ein neuer Buffer geöffnet wird
+set hidden
 
-"----------vim-plug----------
+" aktiviert Unicode
+set encoding=utf-8
+set fileencoding=utf-8
 
-call plug#begin()
+" Suchergebnisse werden farblich markiert
+" set hlsearch " zum Abschalten: set nohlsearch
 
-Plug 'scrooloose/nerdtree'
-Plug 'KKPMW/sacredforest-vim'
-Plug 'vim-airline/vim-airline'
+" erweitert die Befehlzeilen history
+set history=1000
 
-call plug#end()
+" Zeilennr einblenden
+set number
 
+" stellt auf relative Zeilennr um
+set relativenumber
 
-"----------Mappings----------
+" Anzahl der Zeilen (gemessen vom unteren oder oberen Bildschirmende) bei denen Vim schon anfängt zu scrollen
+set scrolloff=10
 
-"define Leader
-:let mapleader = ","
+" gibt bei Befehlszeilenvervollständigung mit Tab eine grafische Übersicht der möglichen Auswahl
+set wildmenu
 
-"open vimrc/init.vim with shortcut
-:map <Leader>ev :vsplit $MYVIMRC<Enter>
+" blendet am linken Bildschirmrand Fold-Infos ein
+set foldcolumn=1
+    	
+" Tabtaste bewegt den Cursor um 4 Spalten
+set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
 
-"toggle NERDTree
-:noremap <Leader>tn :NERDTreeToggle<cr>
+" erstellt eine separate Datei zum globalen Speichern von Undo-Schritten, legt das Verzeichnis für diese Datei fest und die Menge an Undo-Schritten
+" set undofile
+" set undodir=$HOME\vimundo\ (oder ein anderes Verzeichnis)
+" set undolevels=1000
 
-"<Esc> to exit terminal-mode
-:tnoremap <Esc> <C-\><C-n>
+" belegt die erstgenannte Taste mit einer Kombination aus den folgenden Tasten/Funktionen; map oder nmap steht für Tastendruck im Normal Mode, imap im Insert Mode und vmap im Visual Mode
+" Beispiel: Speichern per F2
+" nmap <F2> :w<enter>l
+" imap <F2> <esc>:w<enter>l
+" vmap <F2> <esc>:w<enter>l
 
-"faster window navigation
-:nnoremap <c-h> <c-w>h
-:nnoremap <c-j> <c-w>j
-:nnoremap <c-k> <c-w>k
-:nnoremap <c-l> <c-w>l
+" definiert einen mapleader für benutzerdefinierte Befehle, also eine Taste die ähnlich Shift oder Strg einem bestimmten Befehlstyp vorausgehen soll; bei map Befehlen wird dieser Leader dann mit dem Platzhalter <leader> geladen
+" let mapleader=","
+" map <leader>s :setlocal spell!<enter> "mit ,s wird im aktuellen Buffer (local) die Rechtschreibprüfung (spell) getogglet (!)
+" map <leader>y :%y+<enter>:%y<enter> "mit ,y wird der komplette Buffer (%) in das +-Register (+) geyanked und zugleich normal geyanked
 
+" Strg+Richtungstaste zum Wechseln zwischen Fenstern
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
-"----------Custom Commandline----------
+" lässt das Farbschema umstellen
+" colorscheme Farbschema "oder auch :colors Farbschema
+colors desert
 
-":WJ saves buffer as .java file to project folder
-":command -nargs=1 WJ :w ~\Desktop\code\java\<args>.java
+" Font auswählen
+set guifont=Consolas:h10:cANSI:qDRAFT
 
-":WH saves buffer as .html file to project folder
-":command -nargs=1 WH :w ~\Desktop\code\html\<args>.html
+" regelt die Textbreite
+" :set textwidth=10
 
+" Entfernt den Menübalken
+set guioptions-=m
 
-"----------Autocommands----------
+" Entfernt die Werkzeugleiste
+set guioptions-=T
 
-"nothing yet
+" Entfernt den rechten Rollbalken
+set guioptions-=r
 
-"----------Make and Compile----------
+" Entfernt den linken Rollbalken
+set guioptions-=L
 
-"nothing yet
+" Zeigt unten rechts Infos zu Zeilen- und Spaltennr.
+set ruler
+
+" Setzt den default Speicherort für neue vim-Dateien
+" cd C:\Users\chris\Desktop\_udemyVIM\
+
+" Im Normal Mode fügt Enter / Shift-Enter eine leere Zeile unter / über dem Cursor ein
+" nmap <S-Enter> O<Esc>
+" nmap <Enter> o<Esc>
+"
+:iabbrev td Todo
