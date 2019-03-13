@@ -73,7 +73,7 @@ set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
 "set undolevels=1000
 
 "selects font
-set guifont=Consolas:h10:cANSI:qDRAFT
+"set guifont=Consolas:h10:cANSI:qDRAFT
 
 "removes menu bar in gVim
 "set guioptions-=m
